@@ -1,0 +1,13 @@
+<h1>Welcome to the <%= @sub.title %> Sub</h1>
+
+<br>
+<%= @sub.description %>
+<br><br>
+
+<%= link_to "Add a post", new_sub_post_url(@sub.id) %><br><br>
+
+<ul>
+<% @posts.each do |post| %>
+  <li><%= link_to post.title, post_url(post) %></li>
+<% end %>
+</ul>

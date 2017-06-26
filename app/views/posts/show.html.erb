@@ -1,0 +1,20 @@
+<h1>Post: <%= @post.title %></h1>
+
+<ul>
+<li>Post URL: <%= @post.url %></li>
+<li>Content: <%= @post.content %></li>
+</ul>
+<br>
+
+<br>
+<%= link_to "Add comment", new_post_comment_url(@post.id) %>
+<h3>Comments</h3>
+<ul>
+  <% @post.top_level_comments.each do |top_comment| %>
+    <%= render "layouts/comment", comment: top_comment %>
+  <% end %>
+</ul>
+
+<br>
+<%= link_to "Add another post", new_sub_post_url(@post.sub) %><br><br>
+<%= link_to "Back to sub", sub_url(@post.sub)%>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RedditApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <br><br>
+<%= link_to "View all subs", subs_url %>
+
+<% if flash[:errors] %>
+<ul>
+  <% flash[:errors].each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+</ul>
+<% end %>
+<br><br>
+
+<%= yield %>
+
+<% if current_user %>
+  You are logged in as <%= current_user.username %><br><br>
+  <%= button_to "Log Out", session_url, method: :delete %>
+<% else %>
+<%= link_to "Sign Up", new_user_url %> or <%= link_to "Sign In", new_session_url %>
+<% end %>
+
+
+</body>
+</html>

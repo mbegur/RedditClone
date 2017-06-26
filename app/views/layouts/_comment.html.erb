@@ -1,0 +1,8 @@
+<ul>
+  <li><%= comment.author.username %> :
+    <%= link_to comment.content, comment_url(comment) %>
+  </li>
+  <% comment.child_comments.each do |child_comment| %>
+      <%= render "layouts/comment", comment: child_comment %>
+  <% end %>
+</ul>
